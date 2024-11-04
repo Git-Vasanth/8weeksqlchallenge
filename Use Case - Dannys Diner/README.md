@@ -7,7 +7,7 @@
 - [Entity Relationship Diagram](#entity-relationship-diagram)
 - [Question and Solution](#question-and-solution)
 
-Please note that all the information regarding the case study has been sourced from the following link: [here](link-url-here). <!-- Replace with actual link -->
+Please note that all the information regarding the case study has been sourced from the following link: [here](https://8weeksqlchallenge.com/). <!-- Replace with actual link -->
 
 ## Business Task
 Danny wants to use the data to answer a few simple questions about his customers, especially about their visiting patterns, how much money they’ve spent and also which menu items are their favourite.
