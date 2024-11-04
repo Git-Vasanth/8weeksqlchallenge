@@ -1,4 +1,3 @@
-# 8 week sql challenge
 # 8 Week SQL Challenge
 
 Welcome to the **8 Week SQL Challenge**! This is your opportunity to start your SQL learning journey and enhance your database management skills through practical case studies.
