@@ -1,6 +1,6 @@
 # 🍜 Case Study #1: Danny's Diner
 
-![Image](image-url-here)  <!-- Replace with actual image URL -->
+![Image](https://8weeksqlchallenge.com/images/case-study-designs/1.png)  <!-- Replace with actual image URL -->
 
 ## 📚 Table of Contents
 - [Business Task](#business-task)
