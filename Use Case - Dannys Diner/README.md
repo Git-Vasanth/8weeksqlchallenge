@@ -16,7 +16,7 @@ Danny wants to use the data to answer a few simple questions about his customers
 ![Entity Relationship Diagram](https://github.com/user-attachments/assets/fa164ad7-b9e5-49d5-991c-bd2d7eaa20c4)  <!-- Replace with actual image URL -->
 
 ## Question and Solution
-Please join me in executing the queries using PostgreSQL on DB Fiddle. It would be great to work together on the questions! 
+
 
 ### 1. What is the total amount each customer spent at the restaurant?
 ```sql
