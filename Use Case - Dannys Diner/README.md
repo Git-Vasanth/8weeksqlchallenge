@@ -29,5 +29,12 @@ FROM
 WHERE
     s.product_id = m.product_id
 GROUP BY s.customer_id
+```
 
+### Output
+
+|customer_id|total_spent|
+|A|76|
+|B|74|
+|C|36|
 
