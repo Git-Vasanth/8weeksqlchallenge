@@ -21,10 +21,13 @@ Danny wants to use the data to answer a few simple questions about his customers
 ### 1. What is the total amount each customer spent at the restaurant?
 ```sql
 SELECT 
-  sales.customer_id, 
-  SUM(menu.price) AS total_sales
-FROM dannys_diner.sales
-INNER JOIN dannys_diner.menu
-  ON sales.product_id = menu.product_id
-GROUP BY sales.customer_id
-ORDER BY sales.customer_id ASC;
+    s.customer_id, SUM(m.price) AS total_spent
+FROM
+    sales s
+        JOIN
+    menu m
+WHERE
+    s.product_id = m.product_id
+GROUP BY s.customer_id
+
+
