@@ -80,3 +80,21 @@ where r.roow_number = 1
 | B           |2021-01-01            | 2           |curry            |
 | C           |2021-01-01            | 3           |ramen            |
 
+### 4. What is the most purchased item on the menu and how many times was it purchased by all customers?
+```sql
+with max_order as (select s.customer_id , s.product_id , m.product_name from sales s
+join
+menu m 
+on 
+s.product_id = m.product_id)
+
+select product_name , count(product_name) as ordered_count from max_order group by product_name order by ordered_count desc limit 1
+;
+
+```
+
+### Output
+
+| product_name |ordered_count |
+|-------------|--------------|
+| ramen           |8            |
