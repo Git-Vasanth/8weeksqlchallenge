@@ -96,6 +96,14 @@ where r.roow_number = 1
 
 ```
 
+### Output
+
+| customer_id |order_date | product_id |product_count |
+|-------------|--------------|-------------|--------------|
+| A           |2021-01-01            | 1           |sushi            |
+| B           |2021-01-01            | 2           |curry            |
+| C           |2021-01-01            | 3           |ramen            |
+
 #### Interpretation:
 
 This query identifies the first menu item each customer purchased.
@@ -106,14 +114,6 @@ A bought sushi, B bought curry, and C bought ramen on their first visit.
 #### Business Insight:
 
 Knowing first purchases can help in crafting personalized marketing strategies, encouraging customers to try new items based on their initial choices.
-
-### Output
-
-| customer_id |order_date | product_id |product_count |
-|-------------|--------------|-------------|--------------|
-| A           |2021-01-01            | 1           |sushi            |
-| B           |2021-01-01            | 2           |curry            |
-| C           |2021-01-01            | 3           |ramen            |
 
 ### 4. What is the most purchased item on the menu and how many times was it purchased by all customers?
 ```sql
@@ -165,7 +165,7 @@ order by customer_id
 | A           |3            | ramen           |3            |
 | B           |1            | sushi           |2            |
 | B           |2            | curry           |2            |
-| B           |3            | ramesn           |2            |
+| B           |3            | ramen           |2            |
 | C           |3            | ramen           |3            |
 
 #### Interpretation:
