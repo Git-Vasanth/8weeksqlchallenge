@@ -33,8 +33,7 @@ GROUP BY s.customer_id
 
 ### Output
 
-|customer_id|total_spent|
-|A|76|
-|B|74|
-|C|36|
+| Customer ID | Product Name | Total Amount Spent | Visit Count | First Item Purchased | Most Purchased Item | Total Items Before Membership | Points Earned |
+|-------------|--------------|---------------------|-------------|----------------------|---------------------|-------------------------------|----------------|
+| A           | Sushi        | $76                 | 4           | Curry                | Ramen               | 2                             | 860            |
 
