@@ -174,7 +174,7 @@ This query identifies the most popular item for each customer based on their ord
 
 #### Output:
 
-A's favorite is ramen, B's is sushi and curry, and C's is ramen.
+A's favorite is ramen, B's is sushi, ramen and curry, and C's is ramen.
 
 #### Business Insight:
 
