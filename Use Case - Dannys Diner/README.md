@@ -39,3 +39,44 @@ GROUP BY s.customer_id
 | B           |74            |
 | C           |36            |
 
+### 2. How many days has each customer visited the restaurant?
+```sql
+SELECT 
+  s.customer_id AS customer_id, 
+  COUNT(DISTINCT s.order_date) AS visitng_count
+FROM 
+  dannys_diner.sales AS s
+GROUP BY 
+  s.customer_id
+ORDER BY 
+  s.customer_id ASC;
+
+```
+### Output
+
+| customer_id |visiting_count |
+|-------------|--------------|
+| A           |4            |
+| B           |6            |
+| C           |2            |
+
+### 3. What was the first item from the menu purchased by each customer?
+```sql
+with ranks as (select customer_id , order_date , product_id , row_number() Over(partition by customer_id order by order_date) as roow_number from sales)
+
+select r.customer_id , r.order_date , r.product_id , m.product_name from ranks r
+join menu m
+on r.product_id = m.product_id
+where r.roow_number = 1
+;
+
+```
+
+### Output
+
+| customer_id |order_date | product_id |product_count |
+|-------------|--------------|-------------|--------------|
+| A           |2021-01-01            | 1           |sushi            |
+| B           |2021-01-01            | 2           |curry            |
+| C           |2021-01-01            | 3           |ramen            |
+
