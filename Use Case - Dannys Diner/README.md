@@ -39,6 +39,17 @@ GROUP BY s.customer_id
 | B           |74            |
 | C           |36            |
 
+#### Interpretation:
+
+This query calculates the total spending of each customer by joining sales data with the menu to get the prices of the products purchased.
+Output:
+
+* Customer A spent $76, B spent $74, and C spent $36.
+
+#### Business Insight:
+
+Customer A is the highest spender, which might indicate loyalty or a preference for more expensive items. This could inform marketing strategies targeting high-value customers.
+
 ### 2. How many days has each customer visited the restaurant?
 ```sql
 SELECT 
