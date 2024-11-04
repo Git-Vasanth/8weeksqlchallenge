@@ -111,6 +111,8 @@ where rt.ranked_orders = 1
 order by customer_id
 ;
 ```
+### Output
+
 | customer_id |product_id | product_name |count_orders |
 |-------------|--------------|-------------|--------------|
 | A           |3            | ramen           |3            |
@@ -118,3 +120,65 @@ order by customer_id
 | B           |2            | curry           |2            |
 | B           |3            | ramesn           |2            |
 | C           |3            | ramen           |3            |
+
+### 6. Which item was purchased first by the customer after they became a member?
+```sql
+with first_purchase as (select s.customer_id , m.join_date , s.order_date ,s.product_id , row_number() over(partition by s.customer_id order by s.order_date) as row_numbr from sales s join members m on s.customer_id = m.customer_id where s.order_date > m.join_date)
+
+select fp.customer_id , m.product_name from first_purchase fp
+join
+menu m
+on 
+fp.product_id = m.product_id
+where row_numbr = 1
+order by fp.customer_id
+;
+```
+### Output
+
+| customer_id |product_name |
+|-------------|--------------|
+| A           |ramen            |
+| B           |sushi            |
+
+### 7. Which item was purchased just before the customer became a member?
+```sql
+with cte as (select sales.customer_id ,max(sales.order_date) as last_day_b4_membership_purchase, sales.product_id , row_number() over(partition by customer_id order by max(sales.order_date) desc) as just_b4 from sales join members on sales.customer_id = members.customer_id where members.join_date > sales.order_date group by sales.customer_id , sales.product_id)
+
+select c.customer_id , m.product_name from cte c join menu m on c.product_id = m.product_id where just_b4 = 1
+;
+```
+
+### Output
+
+| customer_id |product_name |
+|-------------|--------------|
+| A           |sushi            |
+| B           |sushi            |
+
+### 8. What is the total items and amount spent for each member before they became a member?
+```sql
+with cte as (SELECT 
+    sales.customer_id,
+    (sales.order_date),
+    members.join_date,
+    sales.product_id,
+    menu.price
+FROM
+    sales
+        JOIN
+    members ON sales.customer_id = members.customer_id
+		JOIN
+	menu ON sales.product_id = menu.product_id
+WHERE
+    members.join_date > sales.order_date)
+    
+select customer_id , count(product_id) as total_items, sum(price) as total_spent from cte group by customer_id  order by customer_id  
+    ;
+```
+### Output
+
+| customer_id |total_items |total_spent|
+|-------------|--------------|--------------|
+| A           |2            |25            |
+| B           |3            |40            |
