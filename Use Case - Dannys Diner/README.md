@@ -98,3 +98,23 @@ select product_name , count(product_name) as ordered_count from max_order group 
 | product_name |ordered_count |
 |-------------|--------------|
 | ramen           |8            |
+
+### 5. Which item was the most popular for each customer?
+```sql
+with ranked_table as (select customer_id ,  product_id , count(product_id)  as count_orders, rank() over(partition by customer_id order by count(product_id) desc) as ranked_orders from sales s group by customer_id ,  product_id) 
+
+select rt.customer_id , rt.product_id , m.product_name , rt.count_orders from ranked_table rt
+join menu m
+on 
+rt.product_id = m.product_id
+where rt.ranked_orders = 1
+order by customer_id
+;
+```
+| customer_id |product_id | product_name |count_orders |
+|-------------|--------------|-------------|--------------|
+| A           |3            | ramen           |3            |
+| B           |1            | sushi           |2            |
+| B           |2            | curry           |2            |
+| B           |3            | ramesn           |2            |
+| C           |3            | ramen           |3            |
